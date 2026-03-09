@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paper Chat</title>
+  <link rel="stylesheet" href="sidepanel.css">
+  <!-- KaTeX for LaTeX rendering -->
+  <link rel="stylesheet" href="katex.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>📄 Paper Chat</h1>
+      <button id="settingsBtn" class="icon-btn" title="Settings">⚙️</button>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settingsPanel" class="settings-panel hidden">
+      <div class="settings-header">
+        <h2>Settings</h2>
+        <button id="closeSettingsBtn" class="icon-btn">✕</button>
+      </div>
+      <div class="settings-content">
+        <div class="form-group">
+          <label for="apiProvider">LLM Provider</label>
+          <select id="apiProvider">
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic (Claude)</option>
+            <option value="custom">OpenAI-Compatible (Custom)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="apiKey">API Key</label>
+          <input type="password" id="apiKey" placeholder="Enter your API key">
+          <button id="toggleApiKey" class="toggle-btn">👁️</button>
+        </div>
+        <div class="form-group" id="customEndpointGroup" style="display: none;">
+          <label for="customEndpoint">Base URL</label>
+          <input type="text" id="customEndpoint" placeholder="https://api.example.com/v1">
+          <small style="color: var(--text-secondary, #888); font-size: 11px; margin-top: 4px; display: block;">Leave empty to use the default OpenAI endpoint</small>
+        </div>
+        <div class="form-group">
+          <label for="modelName">Model</label>
+          <input type="text" id="modelName" placeholder="e.g., gpt-4, claude-3-opus">
+        </div>
+        <button id="saveSettingsBtn" class="primary-btn">Save Settings</button>
+        <div id="settingsStatus" class="status-message"></div>
+      </div>
+    </div>
+
+    <!-- PDF Status -->
+    <div class="pdf-status">
+      <div id="pdfInfo" class="info-box">
+        <span id="pdfStatusText">No PDF detected</span>
+      </div>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="chat-container">
+      <div id="chatMessages" class="chat-messages">
+        <div class="welcome-message">
+          <h3>Welcome to Paper Chat! 👋</h3>
+          <p>To get started:</p>
+          <ol>
+            <li>Click the ⚙️ icon to set your API key</li>
+            <li>Open a PDF in Chrome</li>
+            <li>Start chatting about the document!</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <textarea 
+        id="messageInput" 
+        placeholder="Ask a question about the PDF..."
+        rows="3"
+        disabled
+      ></textarea>
+      <div class="input-actions">
+        <button id="clearChatBtn" class="secondary-btn">Clear Chat</button>
+        <button id="sendBtn" class="primary-btn" disabled>Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PDF.js for PDF text extraction -->
+  <script src="pdf.min.js"></script>
+  <!-- marked.js for Markdown rendering -->
+  <script src="marked.min.js"></script>
+  <!-- KaTeX for LaTeX rendering -->
+  <script src="katex.min.js"></script>
+  <script src="katex-auto-render.min.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
