@@ -1,5 +1,3 @@
-**This repository is coded purely by Claude-sonnet-4-6.**
-
 # Paper Chat - Chrome Extension for PDF Analysis
 
 A Chrome extension that allows you to chat with PDFs using Large Language Models (LLMs). Open any PDF in Chrome, activate the sidebar, and start asking questions or requesting summaries.
